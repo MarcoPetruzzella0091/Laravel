@@ -13,7 +13,8 @@ class AttivitaController extends Controller
      */
     public function index()
     {
-       return Attivita:: all();
+       $corsi = Attivita::all();
+       return view('homepage')->with("corsi" , $corsi);
     }
 
     /**

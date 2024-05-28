@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Prenotazioni;
 use App\Http\Requests\StorePrenotazioniRequest;
 use App\Http\Requests\UpdatePrenotazioniRequest;
+use App\Models\Attivita;
 
 class PrenotazioniController extends Controller
 {
@@ -13,7 +14,7 @@ class PrenotazioniController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -21,7 +22,9 @@ class PrenotazioniController extends Controller
      */
     public function create()
     {
-        //
+        $prenotazioni = Prenotazioni::all();
+        $attivita = Attivita::all();
+        return view('Prenotazioni')->with("prenotazioni" , $prenotazioni )->with("attivita" , $attivita );
     }
 
     /**
@@ -29,7 +32,9 @@ class PrenotazioniController extends Controller
      */
     public function store(StorePrenotazioniRequest $request)
     {
-        //
+        Prenotazioni::create($request->all());
+       
+
     }
 
     /**
