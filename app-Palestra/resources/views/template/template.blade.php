@@ -13,6 +13,7 @@
         background-position: center;
         background-repeat: no-repeat;
         color: white;
+        min-height: 100vh
       }
      
     </style>

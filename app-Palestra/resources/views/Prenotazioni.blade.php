@@ -87,7 +87,7 @@ integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIe
              </select>
          </div>
          <div class="col-md-12 text-center">
-             <button type="submit" class="btn btn-primary">Aggiungi</button>
+             <button type="submit" class="btn  btn-outline-primary">Aggiungi</button>
          </div>
      </form>
  </div>
