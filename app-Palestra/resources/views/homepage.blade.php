@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,6 +32,21 @@
 </nav>
 
     <h1 class="text-center my-5">Lista corsi</h1>
+    
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+ -->
+
+
+ @extends('template.template')
+
+
+@section('content')
+<h1 class="text-center my-5">@section('title', 'Homepage')</h1>
     <div class="row my-5 mx-5">
         @foreach($corsi as $corso)
         <div class="col-3">
@@ -46,9 +61,5 @@
         </div>
         @endforeach
     </div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+   
+@endsection

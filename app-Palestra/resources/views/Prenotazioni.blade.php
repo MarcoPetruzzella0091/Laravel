@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,13 +31,35 @@
   </div>
 </nav>
 
-    <h1 class="text-center my-5">Prenotazioni</h1>
+    <h1 class="text-center my-5">Inserisci prenotazione</h1>
      {{ $prenotazioni }}
 {{ $attivita  }}    
 
 
 
-   <div class="container my-5" >
+   
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+ -->
+
+
+ 
+
+
+ 
+ @extends('template.template')
+
+
+@section('content')
+@section('title', 'Inserisci prenotazione')
+@if(session('success'))  
+<h2  class="text-center my-5 text-success" >{{ session('success') }}</h2>
+@endif
+<div class="container my-5" >
     <form method="POST" action="/prenotazioni">
         @csrf
         <div class="mb-3">
@@ -50,11 +72,10 @@
       
     </select>
 </div>
-        <div class="mb-3">
-            <label for="data" class="form-label">Data</label>
-            <input type="date" class="form-control" id="data" name="data">
-        </div>
-        <div class="mb-3">
+<div class="mb-3">
+    <label for="data" class="form-label">Data</label>
+    <input type="date" class="form-control" id="data" name="data">
+</div>
     <label for="ora" class="form-label">Fascia oraria</label>
     <select class="form-control" id="ora" name="ora"><option value="08:00 - 10:00">08:00 - 10:00</option>
         <option value="10:00 - 12:00">10:00 - 12:00</option>
@@ -68,9 +89,16 @@
         <button type="submit" class="btn btn-primary">Aggiungi</button>
     </form>
     </div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+   <!--  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const dateInput = document.getElementById('data');
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Mesi da 0 a 11
+        const day = String(today.getDate()).padStart(2, '0');
+        const minDate = `${year}-${month}-${day}`;
+        
+        dateInput.setAttribute('min', minDate);
+    });
+</script> -->
+@endsection

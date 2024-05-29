@@ -52,7 +52,7 @@ class PrenotazioniController extends Controller
           
            
         ]);
-
+        return redirect()->back()->with('success', 'Prenotazione creata con successo.');
     }
 
     /**
