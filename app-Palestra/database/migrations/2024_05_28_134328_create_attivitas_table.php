@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('attivitas', function (Blueprint $table) {
             $table->id();
             $table->string('corso');
-            
+            $table->string('descrizione');
+            $table->integer('posti disponibili');
             $table->timestamps();
         });
     }

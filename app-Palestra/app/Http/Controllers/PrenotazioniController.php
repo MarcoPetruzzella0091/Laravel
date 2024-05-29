@@ -6,6 +6,10 @@ use App\Models\Prenotazioni;
 use App\Http\Requests\StorePrenotazioniRequest;
 use App\Http\Requests\UpdatePrenotazioniRequest;
 use App\Models\Attivita;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 class PrenotazioniController extends Controller
 {
@@ -13,8 +17,12 @@ class PrenotazioniController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        
+    {   
+        $prenotazioni = Prenotazioni::with(['attivita', 'user'])->get();
+       //return $prenotazioni;
+        return view('ListaPrenotazioni' , ['prenotazioni' => $prenotazioni]);
+
+
     }
 
     /**
@@ -31,9 +39,19 @@ class PrenotazioniController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StorePrenotazioniRequest $request)
-    {
-        Prenotazioni::create($request->all());
-       
+    {   
+        //return Auth::user();
+        Prenotazioni::create([
+            'user_id' => Auth::user()->id,
+            'attivita_id' => $request->corso,
+            'data' => $request->data,
+            'orario' => $request->ora,
+            
+    
+            
+          
+           
+        ]);
 
     }
 
@@ -66,6 +84,7 @@ class PrenotazioniController extends Controller
      */
     public function destroy(Prenotazioni $prenotazioni)
     {
-        //
+           $prenotazioni->delete();
+           return redirect()->back()->with('success', 'Prenotazione eliminata con successo.');
     }
 }

@@ -7,8 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Prenotazioni extends Model
 {   protected $fillable = [
-    'corso', 'data', 'ora'
+    'corso', 'data', 'orario', 'user_id' , 'attivita_id'
 ];
 
     use HasFactory;
+
+    function attivita(){
+        return $this->belongsTo(Attivita::class);
+    }
+
+    function user(){
+        return $this->belongsTo(User::class);
+    }
 }

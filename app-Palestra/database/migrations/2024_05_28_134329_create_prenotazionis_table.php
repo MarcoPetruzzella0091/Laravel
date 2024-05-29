@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('attivita_id')->references('id')->on('attivitas')
                             ->onUpdate('cascade')->onDelete('cascade');
             $table->date('data');
+            $table ->string('orario');
             $table->timestamps();
         });
     }

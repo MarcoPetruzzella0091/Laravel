@@ -6,6 +6,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg px-5" style="background-color: #e3f2fd;" >
@@ -31,44 +32,46 @@
   </div>
 </nav>
 
-    <h1 class="text-center my-5">Prenotazioni</h1>
-     {{ $prenotazioni }}
-{{ $attivita  }}    
+    <h1 class="text-center my-5">Lista prenotazioni</h1>
+    <div class=" my-5 container">
+    
 
-
-
-   <div class="container my-5" >
-    <form method="POST" action="/prenotazioni">
-        @csrf
-        <div class="mb-3">
-    <label for="corso" class="form-label">Corso</label>
-    <select class="form-select" id="corso" name="corso">
-    @foreach($attivita as $item)
-    <option value="{{ $item -> id }}"> {{ $item -> corso }}</option>
-   
-@endforeach
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Corso</th>
+      <th scope="col">Data</th>
+      <th scope="col">fascia oarioa</th>
+      <th scope="col">Modifica</th>
+      <th scope="col">Cancella</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($prenotazioni as $prenotazione) 
+    <tr>
       
-    </select>
-</div>
-        <div class="mb-3">
-            <label for="data" class="form-label">Data</label>
-            <input type="date" class="form-control" id="data" name="data">
-        </div>
-        <div class="mb-3">
-    <label for="ora" class="form-label">Fascia oraria</label>
-    <select class="form-control" id="ora" name="ora"><option value="08:00 - 10:00">08:00 - 10:00</option>
-        <option value="10:00 - 12:00">10:00 - 12:00</option>
-        <option value="12:00 - 14:00">12:00 - 14:00</option>
-        <option value="14:00 - 16:00">14:00 - 16:00</option>
-        <option value="16:00 - 18:00">16:00 - 18:00</option>
-        <option value="18:00 - 20:00">18:00 - 20:00</option>
-    </select>
-</div>
+      <td>{{ $prenotazione->attivita->corso }}</td>
+      <td>{{ $prenotazione->data }}</td>
+      <td>{{ $prenotazione->orario }}</td>
+      <td><a href="" class="btn btn-info"><i class="bi bi-pencil"></i></a></td>
+      <td>
+        <form action="/prenotazioni/{{ $prenotazione->id }}" method="POST" >
+        @csrf
+    @method('DELETE')
+        <button type="submit" class="btn btn-primary">cancella</button></form>
 
-        <button type="submit" class="btn btn-primary">Aggiungi</button>
-    </form>
-    </div>
 
+        </i></a></td>
+     
+    </tr>
+    @endforeach
+    
+    
+  </tbody>
+</table>
+    
+    
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
