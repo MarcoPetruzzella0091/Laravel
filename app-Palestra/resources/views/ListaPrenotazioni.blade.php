@@ -15,7 +15,7 @@
     <tr>
       <th scope="col">Corso</th>
       <th scope="col">Data</th>
-      <th scope="col">fascia oarioa</th>
+      <th scope="col">fascia oraria</th>
       <th scope="col">Modifica</th>
       <th scope="col">Cancella</th>
     </tr>
