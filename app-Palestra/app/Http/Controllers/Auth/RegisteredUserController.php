@@ -28,23 +28,27 @@ class RegisteredUserController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+{  
+    $isAdmin = false;
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(route('dashboard', absolute: false));
+    // Confronto sensibile alle maiuscole e minuscole dopo trimmare il valore
+    if (($request->admincode) === "CiaoAdmin") {
+        $isAdmin = true;
     }
+
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        'isAdmin' => $isAdmin
+    ]);
+
+    event(new Registered($user));
+
+    Auth::login($user);
+
+    return redirect("/homepage");
+}
+
+    
 }

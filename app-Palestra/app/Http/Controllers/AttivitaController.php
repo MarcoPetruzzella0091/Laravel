@@ -71,8 +71,9 @@ class AttivitaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Attivita $attivita)
-    {
-        //
+    public function destroy(Attivita $attivita, $attivita_id  )
+    {  //return $attivita_id;
+        Attivita::destroy($attivita_id);
+        return  redirect()->back();
     }
 }

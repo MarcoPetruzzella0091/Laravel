@@ -36,7 +36,7 @@
           <a class="nav-link text-white" href="/prenotazioni">Prenotazioni</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="/prenotazioni/create">Inserisci prenotazione</a>
+          <a class="nav-link text-white" href="/attivita/create">Inserisci prenotazione</a>
         </li>
       
        
@@ -44,11 +44,14 @@
     </div>
     <div>
     <ul class="navbar-nav">
-    @if (Auth::user()->isAadmin === 1)
+    @if (Auth::user()->isAdmin === 1)
         <li class="nav-item">
-          <a class="nav-link text-white" href="/prenotazioni/create">Crea nuovo Corso</a>
+          <a class="nav-link text-white" href="/attivita/create">Crea nuovo Corso</a>
         </li>
         @endif
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/profile">Profilo</a>
+        </li>
     </ul>
     </div>
     

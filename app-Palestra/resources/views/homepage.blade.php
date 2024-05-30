@@ -55,7 +55,17 @@ integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIe
                 <div class="card-body">
                     <h5 class="card-title">{{ $corso->corso }}</h5>
                     <p class="card-text">{{ $corso->attivita }}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    @if (Auth::user()->isAdmin === 1) 
+    <form action="/homepage/{{ $corso->id }}"  method="POST">
+        @csrf
+        @method('DELETE')
+        <input type="text" value="{{ $corso->id }}" name="id" hidden>
+        <button type="submit" class="btn btn-danger">Cancella</button>
+    </form>
+@else 
+    <a href="#" class="btn btn-primary">Prenota</a>
+@endif
+
                 </div>
             </div>
         </div>
