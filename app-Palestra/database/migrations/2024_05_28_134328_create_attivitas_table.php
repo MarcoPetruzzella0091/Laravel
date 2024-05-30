@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('descrizione');
             $table->integer('posti disponibili');
             $table->timestamps();
+            $table->string('img_url');
         });
     }
 

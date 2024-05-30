@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attivita extends Model
 {   
+    protected $fillable = [
+        'corso',
+        'descrizione',
+        'img_url',
+        'posti disponibili'
+    ];
 
    
     use HasFactory;

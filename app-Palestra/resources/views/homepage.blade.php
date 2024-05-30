@@ -51,7 +51,7 @@ integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIe
         @foreach($corsi as $corso)
         <div class="col-3">
             <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="{{ $corso->img_url }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ $corso->corso }}</h5>
                     <p class="card-text">{{ $corso->attivita }}</p>

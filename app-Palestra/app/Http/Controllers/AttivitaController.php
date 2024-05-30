@@ -22,7 +22,7 @@ class AttivitaController extends Controller
      */
     public function create()
     {
-        //
+        return view('InserisciCorso');
     }
 
     /**
@@ -30,7 +30,19 @@ class AttivitaController extends Controller
      */
     public function store(StoreAttivitaRequest $request)
     {
-        //
+      
+   
+      Attivita::create([
+        'corso' => $request->corso,
+        'descrizione' => $request->descrizione,
+        'posti disponibili' => $request->posti_disponibili,
+        'img_url' => $request->img_url
+        
+
+        
+      
+       
+    ]);
     }
 
     /**
@@ -38,7 +50,6 @@ class AttivitaController extends Controller
      */
     public function show(Attivita $attivita)
     {
-        //
     }
 
     /**

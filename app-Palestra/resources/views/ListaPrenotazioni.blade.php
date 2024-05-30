@@ -27,7 +27,7 @@
       <td>{{ $prenotazione->attivita->corso }}</td>
       <td>{{ $prenotazione->data }}</td>
       <td>{{ $prenotazione->orario }}</td>
-      <td><a href="" class="btn btn-info"><i class="bi bi-pencil"></i></a></td>
+      <td><a href="/prenotazioni/{{ $prenotazione->id }}/edit" class="btn btn-info"><i class="bi bi-pencil"></i></a></td>
       <td>
         <form action="/prenotazioni/{{ $prenotazione->id }}" method="POST" >
         @csrf

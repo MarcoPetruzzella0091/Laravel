@@ -67,8 +67,11 @@ class PrenotazioniController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Prenotazioni $prenotazioni)
-    {
-        //
+    { $attivita= Attivita::all();
+       // return $prenotazioni = Prenotazioni::with(['attivita'])->get();
+       
+        return view('ModificaPrenotazioni')->with("prenotazioni" , $prenotazioni) ->with("attivita" , $attivita );
+        
     }
 
     /**
@@ -76,7 +79,12 @@ class PrenotazioniController extends Controller
      */
     public function update(UpdatePrenotazioniRequest $request, Prenotazioni $prenotazioni)
     {
-        //
+        $prenotazioni->update([
+            'data' => $request->data,
+            'orario' => $request->ora,
+            'attivita_id' => $request->corso
+        ]);
+        return redirect()->back()->with('success', 'Prenotazione modificata con successo.');
     }
 
     /**
